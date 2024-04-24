@@ -1,0 +1,261 @@
+#################
+### TECLA MOD ###
+#################
+
+set $mod Mod4
+
+
+
+###############
+### GENERAL ###
+###############
+
+exec --no-startup-id dex --autostart --environment i3
+
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# Network Manager
+exec --no-startup-id nm-applet
+
+# Drag floating Window
+floating_modifier $mod
+
+# Resize by click and drag
+tiling_drag modifier titlebar
+
+# Recarregar arquivo de config
+bindsym $mod+Shift+c reload
+
+# Reiniciar o i3wm
+bindsym $mod+Shift+r restart
+
+# Sair do i3wm (mostra uma janela de diálogo solicitando confirmação)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym ccedilla resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Bloquear tela
+bindsym $mod+shift+x exec i3lock
+
+# Iniciar esses programas ao iniciar o sistema
+exec firefox 
+
+
+
+########################
+### INICIAR TERMINAL ###
+########################
+
+bindsym $mod+Return exec urxvt
+
+
+#####################
+### FECHAR JANELA ###
+#####################
+
+bindsym $mod+Shift+q kill
+
+
+###################
+### FONTE DO WM ###
+###################
+
+font xft:DejaVu Sans Mono 10
+
+
+#####################
+### AUDIO CONTROL ###
+#####################
+
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+
+
+
+#####################
+### INICIAR DMENU ###
+#####################
+
+bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#1f222d' -nf '#81a1c1' -sb '#81a1c1' -sf '#1f222d' -fn 'DejaVu Sans Mono:bold:size=14'
+
+
+##############################
+### NAVEGAÇÃO E ORIENTAÇÃO ###
+##############################
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+ccedilla focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+ccedilla move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# Go fullscreen
+bindsym $mod+f fullscreen toggle
+
+
+
+###########################
+### ESPAÇOS DE TRABALHO ###
+###########################
+
+# Variáveis
+set $ws1 "1 Terminals"
+set $ws2 "2 Firefox"
+set $ws3 "3 File Manager"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10 Discord"
+
+# Navegar entre espaços de trabalho
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Mover janela para o espaço de trabalho
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Definir qual janela vai para qual espaço ao iniciar o i3wm
+assign [class="firefox"] $ws2
+assign [class="discord"] $ws10
+
+
+
+####################
+### TEMA E CORES ###
+####################
+
+    # class                 border  backgr. text    indicator
+    client.focused          #81a1c1 #81a1c1 #ffffff #81a1c1
+    client.unfocused        #2e3440 #1f222d #888888 #1f222d
+    client.focused_inactive #2e3440 #1f222d #888888 #1f222d
+    client.placeholder      #2e3440 #1f222d #888888 #1f222d
+    client.urgent           #900000 #900000 #ffffff #900000
+
+    client.background       #242424
+
+
+
+#####################
+### FEH WALLPAPER ###
+#####################
+
+exec_always feh --bg-scale canvas.jpg
+
+
+
+###############
+### i3 GAPS ###
+###############
+
+for_window [class="^.*"] border pixel 1
+gaps inner 5
+gaps outer 1
+
+
+
+#####################
+### INICIAR PICOM ###
+#####################
+
+exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
+
+
+
+####################################
+### APARÊNCIA DA BARRA DE STATUS ###
+####################################
+
+bar {
+        height 25
+        position top
+        font xft:DejaVu Sans Mono 12
+        status_command i3status
+        tray_padding 1
+        strip_workspace_numbers yes
+
+        colors {
+                separator  #1f222d
+                background #1f222d
+                statusline #81a1c1
+
+                ################## border  background text
+                focused_workspace  #1f222d #1f222d    #81a1c1
+                active_workspace   #1f222d #252936    #5e81ac
+                inactive_workspace #1f222d #1f222d    #4c566a
+                urgent_workspace   #1f222d #1f222d    #ee829f
+                binding_mode       #1f222d #81a1c1    #2e3440
+    }
+}
