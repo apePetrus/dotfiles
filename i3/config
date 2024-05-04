@@ -1,8 +1,9 @@
+
 #################
 ### TECLA MOD ###
 #################
 
-set $mod Mod4
+set $mod Mod1
 
 
 
@@ -63,7 +64,8 @@ bindsym $mod+r mode "resize"
 bindsym $mod+shift+x exec i3lock
 
 # Iniciar esses programas ao iniciar o sistema
-exec firefox 
+exec firefox
+exec --no-startup-id i3-msg 'workspace $ws7; exec spotify-launcher; workspace $ws1'
 
 
 
@@ -71,7 +73,7 @@ exec firefox
 ### INICIAR TERMINAL ###
 ########################
 
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec kitty
 
 
 #####################
@@ -85,7 +87,7 @@ bindsym $mod+Shift+q kill
 ### FONTE DO WM ###
 ###################
 
-font xft:DejaVu Sans Mono 10
+font pango:monospace 8
 
 
 #####################
@@ -98,14 +100,21 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 
+####################
+### APP LAUNCHER ###
+####################
 
-#####################
-### INICIAR DMENU ###
-#####################
+# bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#1f222d' -nf '#81a1c1' -sb '#81a1c1' -sf '#1f222d' -fn 'DejaVu Sans Mono:bold:size=14'
 
-bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#1f222d' -nf '#81a1c1' -sb '#81a1c1' -sf '#1f222d' -fn 'DejaVu Sans Mono:bold:size=14'
+bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/type-6/launcher.sh
+
 
 
 ##############################
@@ -152,16 +161,16 @@ bindsym $mod+f fullscreen toggle
 ###########################
 
 # Variáveis
-set $ws1 "1 Terminals"
-set $ws2 "2 Firefox"
-set $ws3 "3 File Manager"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10 Discord"
+set $ws10 "10"
 
 # Navegar entre espaços de trabalho
 bindsym $mod+1 workspace $ws1
@@ -190,7 +199,8 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # Definir qual janela vai para qual espaço ao iniciar o i3wm
 assign [class="firefox"] $ws2
 assign [class="discord"] $ws10
-
+assign [class="spotify"] $ws8
+assign [class="spotify-launcher"] $ws8
 
 
 ####################
@@ -207,7 +217,6 @@ assign [class="discord"] $ws10
     client.background       #242424
 
 
-
 #####################
 ### FEH WALLPAPER ###
 #####################
@@ -221,41 +230,31 @@ exec_always feh --bg-scale canvas.jpg
 ###############
 
 for_window [class="^.*"] border pixel 1
-gaps inner 5
-gaps outer 1
+gaps inner 10
+gaps outer 0
 
+# Eliminate the topbar created by i3
+default_border pixel 2
+default_floating_border pixel 2
 
 
 #####################
 ### INICIAR PICOM ###
 #####################
 
-exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
+exec_always --no-startup-id picom 
+# --config ~/.config/i3/picom.conf
 
 
+#######################
+### INICIAR POLYBAR ###
+####################### 
 
-####################################
-### APARÊNCIA DA BARRA DE STATUS ###
-####################################
+exec_always --no-startup-id sh ~/.config/polybar/launch.sh --blocks
 
-bar {
-        height 25
-        position top
-        font xft:DejaVu Sans Mono 12
-        status_command i3status
-        tray_padding 1
-        strip_workspace_numbers yes
 
-        colors {
-                separator  #1f222d
-                background #1f222d
-                statusline #81a1c1
+######################
+### INICIAR RANGER ###
+######################
 
-                ################## border  background text
-                focused_workspace  #1f222d #1f222d    #81a1c1
-                active_workspace   #1f222d #252936    #5e81ac
-                inactive_workspace #1f222d #1f222d    #4c566a
-                urgent_workspace   #1f222d #1f222d    #ee829f
-                binding_mode       #1f222d #81a1c1    #2e3440
-    }
-}
+bindsym $mod+e exec kitty -e ranger
