@@ -1,7 +1,7 @@
 # dotfiles
 My Unix ricing dotfiles.
 
-- **OS**: Arch
+- **OS**: Arch Linux
 - **WM**: i3
 - **Terminal**: Kitty
 - **Shell**: Zsh & Oh-my-zsh 
@@ -11,5 +11,3 @@ My Unix ricing dotfiles.
 - **Launcher**: Rofi
 - **Compositor**: Picom
 - **File Manager**: Ranger
-- **Editor**: Sublime
-- **Music App**: Spotify & Spicetify
