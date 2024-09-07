@@ -1,0 +1,24 @@
+PIPEWIRE QUE CACETA CONFIGURAR AUDIO DIREITO
+
+ok, comecemos com:
+instale os pacotes
+pipewire pipewire-pulse alsa-utils pulseaudio-utils
+
+GARANTA que o pulseaudio não está instalado nem rodando.
+
+roda aí o wireplumber certinho e linka tbm o pipewire pulse assim:
+
+$ mkdir -p /etc/pipewire/pipewire.conf.d
+$ ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d
+
+$ ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d
+
+pra testar tudinho, ve se o pipewire ta funcionando.
+roda o pipewire
+numa outra janela ve se o wireplumber ta show com
+$ wpctl status
+e se o pulseaudio ta configurado certo com
+$ pactl info
+
+no caso, o pulseaudio nao existe pq só ta sendo reinventado pelo
+pipewire

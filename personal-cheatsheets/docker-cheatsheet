@@ -1,0 +1,9 @@
+docker pull <img> #baixa a img da docker
+docker run -t -d --name <nome-docker> <img>  
+#roda a docker a partir da imagem, dando um nome pra ela
+parametros -t roda um pseduo tty
+parametros -d roda o container detatched em background
+
+docker exec -it <nome-docker> <sh/bash> executa a docker e entra nela com shell
+-i é modo interativo
+-t é modo pseudotty
