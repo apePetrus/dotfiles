@@ -122,16 +122,67 @@ bindsym $mod+r mode "resize"
 # finds out, if availabl
 
 exec_always ~/.config/polybar/launch.sh --blocks
-exec_always --no-startup-id picom
+exec_always --no-startup-id picom -b
+exec_always feh --bg-fill ~/.feh-bgs/stairs.png
 
-bindsym $mod+w exec mullvad-browser
+# Wallpapers
+bindsym $mod+Ctrl+0 exec feh --bg-fill ~/.feh-bgs/stairs.png
+bindsym $mod+Ctrl+1 exec feh --bg-fill ~/.feh-bgs/purerthanyourwaifu.png
+bindsym $mod+Ctrl+2 exec feh --bg-fill ~/.feh-bgs/python.png
+bindsym $mod+Ctrl+3 exec feh --bg-fill ~/.feh-bgs/mars.jpg
+bindsym $mod+Ctrl+4 exec feh --bg-fill ~/.feh-bgs/screenlock.jpg
+bindsym $mod+Ctrl+5 exec feh --bg-fill ~/.feh-bgs/domingo.jpg
+bindsym $mod+Ctrl+6 exec feh --bg-fill ~/.feh-bgs/segunda.png
+
+# Quick use keybinds
+bindsym $mod+w exec firefox 
 bindsym $mod+Shift+y exec freetube
-bindsym $mod+Shift+x exec i3lock
+bindsym $mod+Shift+x exec i3lock -i ~/.feh-bgs/screenlockresized.png
+bindsym $mod+e exec kitty ranger
 
-exec_always feh --bg-fill ~/.stairs.jpeg
 
+# Set gaps and borders
 gaps inner 5
 gaps outer 0
-
 default_border pixel 0
 default_floating_border pixel 0
+
+#Printscreen
+bindsym $mod+Shift+s exec "flameshot gui"
+
+
+# Tornar a janela atual em scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Exibir a primeira janela oculta em scratchpad
+bindsym $mod+minus scratchpad show
+
+# change container layout (stacked, tabbed, toggle split)
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+# bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# focus the parent container
+#bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# Swap caps and esc to make life easier with vim
+exec_always setxkbmap -option caps:swapescape
+
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
