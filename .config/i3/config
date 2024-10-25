@@ -123,7 +123,7 @@ bindsym $mod+r mode "resize"
 
 exec_always ~/.config/polybar/launch.sh --blocks
 exec_always --no-startup-id picom -b
-exec_always feh --bg-fill ~/.feh-bgs/stairs.png
+exec feh --bg-fill ~/.feh-bgs/think.jpg
 
 # Wallpapers
 bindsym $mod+Ctrl+0 exec feh --bg-fill ~/.feh-bgs/stairs.png
@@ -133,12 +133,13 @@ bindsym $mod+Ctrl+3 exec feh --bg-fill ~/.feh-bgs/mars.jpg
 bindsym $mod+Ctrl+4 exec feh --bg-fill ~/.feh-bgs/screenlock.jpg
 bindsym $mod+Ctrl+5 exec feh --bg-fill ~/.feh-bgs/domingo.jpg
 bindsym $mod+Ctrl+6 exec feh --bg-fill ~/.feh-bgs/segunda.png
+bindsym $mod+Ctrl+7 exec feh --bg-fill ~/.feh-bgs/think.jpg
 
 # Quick use keybinds
-bindsym $mod+w exec firefox 
+bindsym $mod+w exec mullvad-browser 
 bindsym $mod+Shift+y exec freetube
 bindsym $mod+Shift+x exec i3lock -i ~/.feh-bgs/screenlockresized.png
-bindsym $mod+e exec kitty ranger
+bindsym $mod+e exec thunar
 
 
 # Set gaps and borders
@@ -179,7 +180,6 @@ floating_modifier $mod
 
 # Swap caps and esc to make life easier with vim
 exec_always setxkbmap -option caps:swapescape
-
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
