@@ -13,6 +13,4 @@ while true; do
   sleep 1
 done &
 
-exec setxkbmap -option caps:swapescape &
-
 exec dwm
