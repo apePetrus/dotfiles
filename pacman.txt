@@ -5,7 +5,6 @@ base
 base-devel
 bitwarden
 calc
-castor
 dbeaver
 dbus-glib
 discord
@@ -18,10 +17,8 @@ fd
 feh
 firefox
 flameshot
-freetube
 git
 gnome-disk-utility
-gradience
 grsync
 gst-plugin-pipewire
 gvfs
@@ -42,12 +39,9 @@ libpulse
 libva-mesa-driver
 linux
 linux-firmware
-logseq-desktop-bin
 luarocks
 lxappearance-gtk3
 mariadb
-mullvad-browser-bin
-multimc-bin
 neovim
 networkmanager
 nodejs
@@ -97,7 +91,6 @@ xorg-server
 xorg-xinit
 xorg-xinput
 xorg-xmessage
-yay
 zathura-djvu
 zathura-pdf-mupdf
 zenity

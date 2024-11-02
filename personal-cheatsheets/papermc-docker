@@ -1,0 +1,1 @@
+docker run -p 25565:25565 -e EULA="true" -e MC_VERSION="1.21.1" -e PAPER_BUILD="131" -v ~/papermc:/papermc -d -it --restart on-failure --name papermc phyremaster/papermc
