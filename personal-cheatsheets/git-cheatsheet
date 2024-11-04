@@ -1,2 +1,6 @@
 To update git persona access token on repo:
 https://stackoverflow.com/questions/18935539/authenticate-with-github-using-a-token
+
+To git rm every files without removing all files (add all changes):
+git add -u :/  
+https://stackoverflow.com/questions/492558/removing-multiple-files-from-a-git-repo-that-have-already-been-deleted-from-disk
