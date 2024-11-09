@@ -1,0 +1,2 @@
+// View a directory size via cli
+du -sh /path/to/directory
