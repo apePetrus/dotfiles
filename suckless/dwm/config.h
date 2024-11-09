@@ -1,6 +1,5 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
-#include "fibonacci.c"
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -46,8 +45,6 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-  { "(@)",      spiral }, 
-  { "[\\]",      dwindle },
 };
 
 
@@ -76,13 +73,33 @@ static const char *mutevol[] = { "amixer", "-q", "sset", "Master", "0%", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
+  /* Togglebar Command */
+  { MODKEY,                       XK_b,      togglebar,      {0} },
+
+  /* Peak software */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+  { MODKEY,                       XK_minus,  togglescratch,  {.v = scratchpadcmd } },
+
+  /* Common software */
+  { MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
   { MODKEY|ShiftMask,             XK_y,      spawn,          SHCMD("freetube") },
   { MODKEY,                       XK_e,      spawn,          SHCMD("st -e ranger") },
   { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("flameshot gui") },
- 	{ MODKEY,                       XK_minus,  togglescratch,  {.v = scratchpadcmd } },
+  { MODKEY|ShiftMask,             XK_k,      spawn,          SHCMD("bitwarden-desktop") },
+  { MODKEY|ShiftMask,             XK_g,      spawn,          SHCMD("steam") },
+
+  /* Quit, reboot, shutdown */
+  { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("~/.scripts/prompt 'Do you really want to quit?' 'killall dwm'") },
+  { MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("~/.scripts/prompt 'Do you really want to shutdown the system?' 'poweroff'") },
+  { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("~/.scripts/prompt 'Do you really want to reboot the system?' 'reboot'") },
+
+  /* Sound */
+  { MODKEY|ShiftMask,             XK_equal,  spawn,          {.v = upvol } },
+  { MODKEY|ShiftMask,             XK_minus,  spawn,          {.v = downvol } },
+  { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mutevol } },
+
+  /* Windows management */
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -92,23 +109,25 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
+
+  /* Change between layouts */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[4]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_space,  setlayout,      {0} },  /* Previous layout */
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },  /* For specific window */
+
+  /* Navigation */
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+
+  /* Navigation between different monitors (easier than I thought) */
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
-  { 0,              XF86XK_AudioRaiseVolume, spawn,          {.v = upvol } },
-  { 0,              XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },
-  { 0,                     XF86XK_AudioMute, spawn,          {.v = mutevol } },
+
+  /* Tag keys */
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -118,7 +137,6 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
 };
 
 /* button definitions */
