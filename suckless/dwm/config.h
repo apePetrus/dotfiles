@@ -94,6 +94,9 @@ static const Key keys[] = {
   { MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("~/.scripts/prompt 'Do you really want to shutdown the system?' 'poweroff'") },
   { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("~/.scripts/prompt 'Do you really want to reboot the system?' 'reboot'") },
 
+  /* Emoji dmenu script */
+  { MODKEY,                     XK_ccedilla, spawn,          SHCMD("~/.scripts/dmenuunicode") },
+
   /* Sound */
   { MODKEY|ShiftMask,             XK_equal,  spawn,          {.v = upvol } },
   { MODKEY|ShiftMask,             XK_minus,  spawn,          {.v = downvol } },
