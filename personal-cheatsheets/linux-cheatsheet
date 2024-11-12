@@ -1,2 +1,7 @@
 // View a directory size via cli
 du -sh /path/to/directory
+
+// View the difference between two files:
+diff FILE1 FILE2
+// View the difference between the files from two directories recursevely
+diff -r DIR1 DIR2
