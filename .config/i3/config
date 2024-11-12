@@ -96,7 +96,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -121,9 +121,9 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if availabl
 
-exec_always ~/.config/polybar/launch.sh --blocks
+# exec_always ~/.config/polybar/launch.sh --blocks
 exec_always --no-startup-id picom -b
-exec feh --bg-fill ~/.feh-bgs/think.jpg
+exec feh --bg-fill ~/.feh-bgs/home2.png
 
 # Wallpapers
 bindsym $mod+Ctrl+0 exec feh --bg-fill ~/.feh-bgs/stairs.png
@@ -136,10 +136,10 @@ bindsym $mod+Ctrl+6 exec feh --bg-fill ~/.feh-bgs/segunda.png
 bindsym $mod+Ctrl+7 exec feh --bg-fill ~/.feh-bgs/think.jpg
 
 # Quick use keybinds
-bindsym $mod+w exec mullvad-browser 
+bindsym $mod+Shift+w exec firefox
 bindsym $mod+Shift+y exec freetube
 bindsym $mod+Shift+x exec i3lock -i ~/.feh-bgs/screenlockresized.png
-bindsym $mod+e exec thunar
+bindsym $mod+Shift+e exec thunar
 
 
 # Set gaps and borders
@@ -160,8 +160,8 @@ bindsym $mod+minus scratchpad show
 
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
-# bindsym $mod+w layout tabbed
-# bindsym $mod+e layout toggle split
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -180,6 +180,9 @@ floating_modifier $mod
 
 # Swap caps and esc to make life easier with vim
 exec_always setxkbmap -option caps:swapescape
+
+# Make it to never go sleeping
+exec_always xset s off
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
