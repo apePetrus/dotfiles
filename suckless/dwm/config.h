@@ -6,8 +6,8 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "FiraCode Nerd Font Mono:pixelsize=15" };
+static const char dmenufont[]       = "FiraCode Nerd Font Mono:pixelsize=15";
 static const char col_gray1[]       = "#1e2326";
 static const char col_gray2[]       = "#7a8478";
 static const char col_gray3[]       = "#d3c6aa";
@@ -30,7 +30,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Firefox",  NULL,       NULL,       0,       0,           -1 },
 	//{ "qutebrowser", NULL,    NULL,       1 << 8,       0,           -1 },
 };
 
@@ -91,8 +91,8 @@ static const Key keys[] = {
 
   /* Quit, reboot, shutdown */
   { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("~/.scripts/prompt 'Do you really want to quit?' 'killall dwm'") },
-  { MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("~/.scripts/prompt 'Do you really want to shutdown the system?' 'poweroff'") },
-  { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("~/.scripts/prompt 'Do you really want to reboot the system?' 'reboot'") },
+  { MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("~/.scripts/prompt 'Do you really want to shutdown the system?' 'loginctl poweroff'") },
+  { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("~/.scripts/prompt 'Do you really want to reboot the system?' 'loginctl reboot'") },
 
   /* Emoji dmenu script */
   { MODKEY,                     XK_ccedilla, spawn,          SHCMD("~/.scripts/dmenuunicode") },
