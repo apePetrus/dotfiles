@@ -47,7 +47,7 @@ utf8decode(const char *s_in, long *u, int *err)
 }
 
 Drw *
-drw_create(Display *dpy, int screen, Window root, unsigned int w, unsigned int h)
+drw_create(Display *dpy, int screen, Window root, unsigned int w, unsigned int h, Visual *visual, unsigned int depth, Colormap cmap)
 {
 	Drw *drw = ecalloc(1, sizeof(Drw));
 
@@ -56,8 +56,11 @@ drw_create(Display *dpy, int screen, Window root, unsigned int w, unsigned int h
 	drw->root = root;
 	drw->w = w;
 	drw->h = h;
-	drw->drawable = XCreatePixmap(dpy, root, w, h, DefaultDepth(dpy, screen));
-	drw->gc = XCreateGC(dpy, root, 0, NULL);
+	drw->visual = visual;
+	drw->depth = depth;
+	drw->cmap = cmap;
+	drw->drawable = XCreatePixmap(dpy, root, w, h, depth);
+	drw->gc = XCreateGC(dpy, drw->drawable, 0, NULL);
 	XSetLineAttributes(dpy, drw->gc, 1, LineSolid, CapButt, JoinMiter);
 
 	return drw;
@@ -73,7 +76,7 @@ drw_resize(Drw *drw, unsigned int w, unsigned int h)
 	drw->h = h;
 	if (drw->drawable)
 		XFreePixmap(drw->dpy, drw->drawable);
-	drw->drawable = XCreatePixmap(drw->dpy, drw->root, w, h, DefaultDepth(drw->dpy, drw->screen));
+	drw->drawable = XCreatePixmap(drw->dpy, drw->root, w, h, drw->depth);
 }
 
 void
@@ -167,21 +170,20 @@ drw_fontset_free(Fnt *font)
 }
 
 void
-drw_clr_create(Drw *drw, Clr *dest, const char *clrname)
+drw_clr_create(Drw *drw, Clr *dest, const char *clrname, unsigned int alpha)
 {
 	if (!drw || !dest || !clrname)
 		return;
-
-	if (!XftColorAllocName(drw->dpy, DefaultVisual(drw->dpy, drw->screen),
-	                       DefaultColormap(drw->dpy, drw->screen),
+  if (!XftColorAllocName(drw->dpy, drw->visual, drw->cmap,
 	                       clrname, dest))
 		die("error, cannot allocate color '%s'", clrname);
+  dest->pixel = (dest->pixel & 0x00ffffffU) | (alpha << 24);
 }
 
 /* Wrapper to create color schemes. The caller has to call free(3) on the
  * returned color scheme when done using it. */
 Clr *
-drw_scm_create(Drw *drw, const char *clrnames[], size_t clrcount)
+drw_scm_create(Drw *drw, const char *clrnames[], unsigned int clralphas[], size_t clrcount)
 {
 	size_t i;
 	Clr *ret;
@@ -191,7 +193,7 @@ drw_scm_create(Drw *drw, const char *clrnames[], size_t clrcount)
 		return NULL;
 
 	for (i = 0; i < clrcount; i++)
-		drw_clr_create(drw, &ret[i], clrnames[i]);
+		drw_clr_create(drw, &ret[i], clrnames[i], clralphas[i]);
 	return ret;
 }
 
@@ -250,9 +252,7 @@ drw_text(Drw *drw, int x, int y, unsigned int w, unsigned int h, unsigned int lp
 		XFillRectangle(drw->dpy, drw->drawable, drw->gc, x, y, w, h);
 		if (w < lpad)
 			return x + w;
-		d = XftDrawCreate(drw->dpy, drw->drawable,
-		                  DefaultVisual(drw->dpy, drw->screen),
-		                  DefaultColormap(drw->dpy, drw->screen));
+    d = XftDrawCreate(drw->dpy, drw->drawable, drw->visual, drw->cmap);
 		x += lpad;
 		w -= lpad;
 	}

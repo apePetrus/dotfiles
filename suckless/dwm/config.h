@@ -8,6 +8,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "FiraCode Nerd Font Mono:pixelsize=15" };
 static const char dmenufont[]       = "FiraCode Nerd Font Mono:pixelsize=15";
+static unsigned int baralpha        = 0xd0;
+static unsigned int borderalpha     = OPAQUE;
 static const char col_gray1[]       = "#1e2326";
 static const char col_gray2[]       = "#7a8478";
 static const char col_gray3[]       = "#d3c6aa";
