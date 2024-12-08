@@ -6,6 +6,8 @@ status() {
 
 pipewire &
 
+setxkbmap br &
+
 feh --no-fehbg --bg-fill "$HOME/.feh-bgs/think.jpg" &
 while true; do
   NOW=$
