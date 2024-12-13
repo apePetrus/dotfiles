@@ -4,6 +4,7 @@ alsa-pipewire
 alsa-utils
 dbus
 elogind
+polkit
 firefox
 freetype-devel
 gcc
