@@ -29,5 +29,15 @@ xclip
 acpi
 xsetroot
 curl
+wget
+unzip
 zsh
 picom
+void-repo-nonfree
+void-repo-multilib
+void-repo-multilib-nonfree
+lazyvim
+ripgrep
+fd
+fzf
+python3
