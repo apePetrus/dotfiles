@@ -18,6 +18,9 @@ mesa
 mesa-dri
 neovim
 nerd-fonts-ttf
+noto-fonts-ttf
+noto-fonts-cjk
+noto-fonts-emoji
 pipewire
 pkg-config
 pulseaudio-utils
