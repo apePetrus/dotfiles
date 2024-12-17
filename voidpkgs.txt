@@ -44,3 +44,4 @@ ripgrep
 fd
 fzf
 python3
+ffmpeg
