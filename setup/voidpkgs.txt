@@ -1,5 +1,3 @@
-packages to install:
-
 alsa-pipewire
 alsa-utils
 dbus
