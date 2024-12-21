@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 status() {
-  echo -n "Battery: $(acpi | awk '{print $4}' | sed s/,//) | $(date '+%d-%m-%Y %H:%M:%S')"
+  $HOME/.scripts/status.sh
 }
 
 pipewire &
