@@ -43,3 +43,5 @@ fd
 fzf
 python3
 ffmpeg
+ranger
+qutebrowser
