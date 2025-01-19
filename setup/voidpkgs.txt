@@ -51,3 +51,4 @@ harfbuzz-devel
 libXext-devel
 libXrender-devel
 gd-devel
+nodejs
