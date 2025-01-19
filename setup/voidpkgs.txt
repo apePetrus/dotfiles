@@ -52,3 +52,4 @@ libXext-devel
 libXrender-devel
 gd-devel
 nodejs
+zsh-syntax-highlighting
