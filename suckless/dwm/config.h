@@ -34,7 +34,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       0,       0,           -1 },
-	{ "qutebrowser", NULL,    NULL,       0,       0,           -1 },
+	{ "librewolf", NULL,    NULL,       0,       0,           -1 },
 };
 
 /* layout(s) */
@@ -66,13 +66,13 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *browsercmd[] = { "qutebrowser", NULL };
+static const char *browsercmd[] = { "librewolf", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
 static const char *upvol[] = { "amixer", "-q", "sset", "Master", "5%+", NULL };
 static const char *downvol[] = { "amixer", "-q", "sset", "Master", "5%-", NULL };
-static const char *mutevol[] = { "amixer", "-q", "sset", "Master", "0%", NULL };
+static const char *mutevol[] = { "amixer", "-q", "sset", "Master", "toggle", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */

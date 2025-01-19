@@ -45,3 +45,9 @@ python3
 ffmpeg
 ranger
 qutebrowser
+flameshot
+imlib2-devel
+harfbuzz-devel
+libXext-devel
+libXrender-devel
+gd-devel
