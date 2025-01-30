@@ -65,7 +65,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static char *tags[] = {"", "", ""};
+static char *tags[] = {"", "", "", "", ""};
 
 static const char* eww[] = { "eww", "open" , "eww", NULL };
 
@@ -143,11 +143,11 @@ static const Key keys[] = {
     /* modifier                         key         function        argument */
 
     // brightness and audio 
-    {MODKEY|ShiftMask,         XK_equal,    spawn, {.v = downvol}},
-	{MODKEY|ShiftMask,         XK_minus, spawn,    {.v = mutevol }},
-	{MODKEY|ShiftMask,         XK_m,    spawn, {.v = upvol}},
-	/*{0,				XF86XK_MonBrightnessUp,     spawn,	{.v = light_up}},*/
-	/*{0,				XF86XK_MonBrightnessDown,   spawn,	{.v = light_down}},*/
+    {MODKEY|ShiftMask,         XK_equal,    spawn,      {.v = upvol}},
+	{MODKEY|ShiftMask,         XK_minus,    spawn,      {.v = downvol }},
+	{MODKEY|ShiftMask,         XK_m,        spawn,      {.v = mutevol}},
+	{0,				XF86XK_MonBrightnessUp,     spawn,	{.v = light_up}},
+	{0,				XF86XK_MonBrightnessDown,   spawn,	{.v = light_down}},
 
     // screenshot fullscreen and cropped
     {MODKEY|ControlMask,                XK_u,       spawn,
