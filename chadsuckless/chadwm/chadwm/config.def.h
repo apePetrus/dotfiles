@@ -50,7 +50,7 @@ static const int toptab = 1;
 
 /* 1 means the bar will float(don't have padding),
  * 0 means the bar have padding */
-static const int floatbar = 1;
+static const int floatbar = 0;
 
 /* 0 means bottom bar */
 static const int topbar = 1;
@@ -126,14 +126,17 @@ static const Launcher launchers[] = {
 static const int tagschemes[] = {SchemeTag1, SchemeTag2, SchemeTag3, SchemeTag4,
                                  SchemeTag5};
 
-static const unsigned int ulinepad =
-    5; /* horizontal padding between the underline and tag */
-static const unsigned int ulinestroke =
-    2; /* thickness / height of the underline */
-static const unsigned int ulinevoffset =
-    0; /* how far above the bottom of the bar the line should appear */
-static const int ulineall =
-    0; /* 1 to show underline on all tags, 0 for just the active ones */
+/* horizontal padding between the underline and tag */
+static const unsigned int ulinepad = 5;
+
+/* thickness / height of the underline */
+static const unsigned int ulinestroke = 2;
+
+/* how far above the bottom of the bar the line should appear */
+static const unsigned int ulinevoffset = 0;
+
+/* 1 to show underline on all tags, 0 for just the active ones */
+static const int ulineall = 0;
 
 static const Rule rules[] = {
     /* xprop(1):
