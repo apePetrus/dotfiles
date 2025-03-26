@@ -27,6 +27,7 @@ ENABLE_CORRECTION="true"
 plugins=(
   git
   zsh-autosuggestions
+  tmux
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -48,8 +49,11 @@ source $ZSH/oh-my-zsh.sh
 alias py='python3'
 alias code='code-oss'
 alias sv-mods='cd "/home/petrus/.steam/steam/steamapps/common/Stardew Valley/Mods"'
+alias td='tmux detach'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export PATH=$PATH:/home/petrus/.spicetify
