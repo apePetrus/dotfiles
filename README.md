@@ -16,6 +16,8 @@
 | Shell              |    [Zsh](https://zsh.org/) 🐚  |
 | Shell Theme        |    [Oh-My-Zsh](https://ohmyz.sh/) 🎇 & [powerlevel10k](https://github.com/romkatv/powerlevel10k) 🤤  |
 | Fonts              |    [Nerd Fonts](https://www.nerdfonts.com/) ✏️  |
+| Colorscheme        |    [Catppuccin](https://catppuccin.com/) 🐈  |
 | Launcher           |    [dmenu](https://tools.suckless.org/dmenu/) 🚀  |
 | Compositor         |    [picom](https://github.com/yshui/picom) ☄️  |
 | File Manager       |    [yazi](https://github.com/sxyazi/yazi) 🗃️ & [Thunar](https://docs.xfce.org/xfce/thunar/start) 📁  |
+| Code Editor        |    [Neovim](https://neovim.io/) 🐰 / [LazyVim](https://www.lazyvim.org/) 💤  |
