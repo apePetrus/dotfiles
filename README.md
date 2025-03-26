@@ -11,9 +11,11 @@
 | Class | Tool |
 ------|------
 | OS                 |    [Void](https://voidlinux.org/) 😎  |
-| WM                 |    [dwm](https://dwm.suckless.org/) 🤓  |
+| WM                 |    [dwm](https://dwm.suckless.org/) 🤓 / [chadwm](https://github.com/siduck/chadwm) 🗿 |
 | Terminal           |    [st](https://st.suckless.org/) 🏄  |
 | Shell              |    [Zsh](https://zsh.org/) 🐚  |
 | Shell Theme        |    [Oh-My-Zsh](https://ohmyz.sh/) 🎇 & [powerlevel10k](https://github.com/romkatv/powerlevel10k) 🤤  |
 | Fonts              |    [Nerd Fonts](https://www.nerdfonts.com/) ✏️  |
 | Launcher           |    [dmenu](https://tools.suckless.org/dmenu/) 🚀  |
+| Compositor         |    [picom](https://github.com/yshui/picom) ☄️  |
+| File Manager       |    [yazi](https://github.com/sxyazi/yazi) 🗃️ & [Thunar](https://docs.xfce.org/xfce/thunar/start) 📁  |
