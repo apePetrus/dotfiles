@@ -221,7 +221,7 @@ static const Key keys[] = {
     /* Common software */
     {MODKEY, XK_w, spawn, {.v = browsercmd}},
     {MODKEY | ShiftMask, XK_y, spawn, SHCMD("freetube")},
-    {MODKEY, XK_e, spawn, SHCMD("st -e ranger")},
+    {MODKEY, XK_e, spawn, SHCMD("st -e yazi")},
     {MODKEY | ShiftMask, XK_s, spawn, SHCMD("flameshot gui")},
     {MODKEY | ShiftMask, XK_k, spawn, SHCMD("bitwarden-desktop")},
     {MODKEY | ShiftMask, XK_g, spawn, SHCMD("steam")},
