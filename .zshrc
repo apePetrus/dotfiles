@@ -58,4 +58,6 @@ source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH=$PATH:/home/petrus/.spicetify
+export PATH=$PATH:/home/petrus/.local/bin/
 export TERM='xterm-256color'
+export BROWSER='librewolf'
