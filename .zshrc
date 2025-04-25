@@ -51,6 +51,7 @@ alias py='python3'
 alias code='code-oss'
 alias sv-mods='cd "/home/petrus/.steam/steam/steamapps/common/Stardew Valley/Mods"'
 alias td='tmux detach'
+alias updt='sudo xbps-install -Suv'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
