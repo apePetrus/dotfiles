@@ -26,6 +26,13 @@ alias yt="youtube-viewer"
 
 alias td="tmux detach"
 
+alias sts="git status"
+alias gc="git commit -m"
+alias gs="git switch"
+alias gsc="git switch -c"
+alias gp="git push"
+alias gpf="git push -f"
+
 alias updt="sudo xbps-install -Su"
 alias xis="sudo xbps-install -S"
 alias xs="xbps-src"
