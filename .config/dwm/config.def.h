@@ -195,7 +195,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0";
-static const char *dmenucmd[] = {"dmenu_run", "-m",      dmenumon,
+static const char *dmenucmd[] = {"dmenu_run", "-i", "-m",  dmenumon,
                                  "-fn",       dmenufont, NULL};
 static const char *browsercmd[] = {"librewolf", NULL};
 
@@ -228,13 +228,13 @@ static const Key keys[] = {
 
     /* Quit, reboot, shutdown */
     {MODKEY | ShiftMask, XK_e, spawn,
-     SHCMD("~/.scripts/prompt 'Do you really want to quit?' 'killall bar.sh "
+     SHCMD("~/.local/bin/prompt 'Do you really want to quit?' 'killall bar.sh "
            "chadwm'")},
     {MODKEY | ShiftMask, XK_x, spawn,
-     SHCMD("~/.scripts/prompt 'Do you really want to shutdown the system?' "
+     SHCMD("~/.local/bin/prompt 'Do you really want to shutdown the system?' "
            "'loginctl poweroff'")},
     {MODKEY | ShiftMask, XK_r, spawn,
-     SHCMD("~/.scripts/prompt 'Do you really want to reboot the system?' "
+     SHCMD("~/.local/bin/prompt 'Do you really want to reboot the system?' "
            "'loginctl reboot'")},
 
     /* Emoji dmenu script */
@@ -299,6 +299,7 @@ static const Key keys[] = {
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_y, setlayout, {.v = &layouts[1]}},
     {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
+    {MODKEY, XK_g, setlayout, {.v = &layouts[11]}},
     {MODKEY | ControlMask, XK_g, setlayout, {.v = &layouts[10]}},
     {MODKEY | ControlMask | ShiftMask, XK_t, setlayout, {.v = &layouts[13]}},
     {MODKEY, XK_space, setlayout, {0}},
