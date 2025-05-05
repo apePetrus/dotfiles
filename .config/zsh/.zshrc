@@ -32,6 +32,7 @@ alias gs="git switch"
 alias gsc="git switch -c"
 alias gp="git push"
 alias gpf="git push -f"
+alias pull="git pull"
 
 alias updt="sudo xbps-install -Su"
 alias xis="sudo xbps-install -S"
