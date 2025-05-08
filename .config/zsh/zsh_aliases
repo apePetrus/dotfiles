@@ -1,0 +1,16 @@
+alias py="python3"
+alias sv-mods="cd $HOME/.steam/steam/steamapps/common/Stardew Valley/Mods"
+alias yt="youtube-viewer"
+
+alias td="tmux detach"
+
+alias updt="sudo xbps-install -Su"
+alias xis="sudo xbps-install -S"
+alias xs="xbps-src"
+
+alias xq="xbps-query -Rs"
+alias xql="xbps-query -l"
+
+alias xr="sudo xbps-remove"
+alias xrr="sudo xbps-remove -R"
+alias xro="sudo xbps-remove -Ooy"
