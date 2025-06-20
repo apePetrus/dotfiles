@@ -1,1 +1,2 @@
-exec ~/.config/dwm/scripts/run.sh
+exec ~/run.sh &
+exec dwm
