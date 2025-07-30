@@ -1,2 +1,2 @@
-exec ~/run.sh &
+exec ~/.local/bin/dwmrun &
 exec dwm
