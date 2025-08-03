@@ -1,0 +1,1 @@
+-P "~/media/video/yt-dlp/" -o "%(uploader)s/%(upload_date)s - %(title)s.%(ext)s"
