@@ -1,11 +1,16 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
+
+export PS1="%{$(tput setaf 165)%}%n%{$(tput setaf 171)%}@%{$(tput setaf 213)%}%m %{$(tput setaf 219)%}%1~ %{$(tput sgr0)%}$ "
+
+fastfetch --kitty /home/petrus/media/pics/robin-cute-resize.jpg
 
 export ZSH="$ZDOTDIR/oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME=""
 
 plugins=(
     git
@@ -24,6 +29,7 @@ export PATH=$PATH:$HOME/.local/bin/
 export EDITOR="nvim"
 export TERM="xterm-256color"
 export obsidian="$HOME/.local/share/Obsidian.AppImage"
+export BROWSER="librewolf"
 
 # Aliases
 source $ZDOTDIR/zsh_aliases
@@ -37,7 +43,7 @@ else
 fi
 
 # p10k
-[[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
+# [[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
