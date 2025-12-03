@@ -4,7 +4,7 @@
 </div>
 
 ## Preview:
-![dwm-screenshot-1](.screenshot.png)
+![dwm-screenshot-1](./.screenshot.png)
 
 ## Details:
 
