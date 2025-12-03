@@ -1,6 +1,6 @@
 <div align="center">
-  <h1>🐧 dotfiles 🐧</h1>
-  <h3>🍙 Petrus' awesome and super cool dotfiles 🍙</h3>
+  <h1>dotfiles</h1>
+  <h3>Petrus' awesome and super cool dotfiles</h3>
 </div>
 
 ## Preview:
