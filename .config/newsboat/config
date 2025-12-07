@@ -4,7 +4,7 @@ auto-reload yes
 
 external-url-viewer "urlscan -dc -r 'linkhandler {}'"
 
-cache-file "$HOME/.cache/newsboat/cache.db"
+cache-file "~/.cache/newsboat/cache.db"
 
 bind-key j down
 bind-key k up
@@ -27,8 +27,8 @@ bind-key x pb-delete
 
 browser linkhandler
 macro , open-in-browser
-macro v set browser "mpv %u" ; open-in-browser ; set browser linkhandler
+macro y set browser "yt-dlp" ; open-in-browser ; set browser linkhandler
+macro v set browser "setsid -f mpv" ; open-in-browser ; set browser linkhandler
 macro w set browser "lynx" ; open-in-browser ; set browser linkhandler
-macro W set browser "librewolf" ; open-in-browser ; set browser linkhandler
+macro d set browser "dmenuhandler" ; open-in-browser ; set browser linkhandler
 macro c set browser "echo %u | xclip -r -sel c" ; open-in-browser ; set browser linkhandler
-
