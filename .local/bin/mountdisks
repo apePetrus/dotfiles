@@ -1,0 +1,66 @@
+#!/bin/sh
+
+# Configuration
+MOUNT_BASE="/run/media/$USER"
+LINK_DIR="$HOME/mnt"
+mkdir -p "$LINK_DIR"
+
+# List partitions that are NOT mounted
+list_unmounted() {
+    lsblk -npP -o NAME,SIZE,MOUNTPOINT,TYPE | while read -r line; do
+        eval "$line"
+        if [ "$TYPE" = "part" ] && [ -z "$MOUNTPOINT" ]; then
+            echo "$NAME ($SIZE)"
+        fi
+    done
+}
+
+# List partitions mounted within the udisks2 path
+list_mounted() {
+    lsblk -npP -o NAME,SIZE,MOUNTPOINT,TYPE | while read -r line; do
+        eval "$line"
+        if echo "$MOUNTPOINT" | grep -q "$MOUNT_BASE"; then
+            echo "$NAME ($SIZE) -> $MOUNTPOINT"
+        fi
+    done
+}
+
+# Main menu via dmenu
+action=$(printf "Mount\nUnmount" | dmenu -i -p "Storage:")
+
+case "$action" in
+    Mount)
+        selection=$(list_unmounted | dmenu -i -l 10 -p "Select device:")
+        [ -z "$selection" ] && exit
+        
+        dev=$(echo "$selection" | cut -d' ' -f1)
+        
+        output=$(udisksctl mount -b "$dev")
+        if [ $? -eq 0 ]; then
+            # Extract mount path from udisksctl output
+            mnt_path=$(echo "$output" | grep -oP '/run/media/[^ ]+')
+            label=$(basename "$mnt_path")
+            
+            # Create symbolic link for easier access
+            ln -sfn "$mnt_path" "$LINK_DIR/$label"
+            notify-send "Drive Mounted" "Label: $label\nLink: $LINK_DIR/$label" -i drive-removable-media
+        fi
+        ;;
+        
+    Unmount)
+        selection=$(list_mounted | dmenu -i -l 10 -p "Select to unmount:")
+        [ -z "$selection" ] && exit
+        
+        dev=$(echo "$selection" | cut -d' ' -f1)
+        mnt_path=$(echo "$selection" | awk '{print $NF}')
+        label=$(basename "$mnt_path")
+        
+        if udisksctl unmount -b "$dev"; then
+            # Remove symlink and attempt to clean up the mount directory if empty
+            rm -f "$LINK_DIR/$label"
+            rmdir "$LINK_DIR" 2>/dev/null
+            
+            notify-send "Drive Unmounted" "$label has been safely removed." -i drive-removable-media
+        fi
+        ;;
+esac
