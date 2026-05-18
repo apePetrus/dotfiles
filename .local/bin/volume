@@ -1,0 +1,10 @@
+#!/bin/sh
+
+case "$1" in
+    --inc)    amixer -q sset Master 5%+ ;;
+    --dec)    amixer -q sset Master 5%- ;;
+    --toggle) amixer -q sset Master toggle ;;
+    *)        echo "Uso: $0 {--inc|--dec|--toggle}"; exit 1 ;;
+esac
+
+pkill -RTMIN+11 dwmblocks
